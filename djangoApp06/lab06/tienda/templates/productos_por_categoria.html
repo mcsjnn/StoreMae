@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Productos en la categoría: {{ categoria.nombre }}</h1>
+<div class="row">
+    {% for prod in productos %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <a href="{% url 'detalle_producto' prod.id %}">
+                {% if prod.foto %}
+                <img class="card-img-top" src="{{ prod.foto.url }}" alt="{{ prod.nombre }}">
+                {% else %}
+                <img class="card-img-top" src="http://placehold.it/700x400" alt="Imagen no disponible">
+                {% endif %}
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="{% url 'tienda:producto' prod.id %}">{{ prod.nombre }}</a>
+                </h4>
+                <h5>S/ {{ prod.precio }}</h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

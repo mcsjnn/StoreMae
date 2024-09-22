@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="product-detail">
+    <h1>{{ producto.nombre }}</h1>
+    {% if producto.foto %}
+    <img class="img-fluid" src="{{ producto.foto.url }}" alt="{{ producto.nombre }}">
+    {% else %}
+    <img class="img-fluid" src="http://placehold.it/700x400" alt="Imagen no disponible">
+    {% endif %}
+    <h3>Precio: S/ {{ producto.precio }}</h3>
+    <p>Categoria: {{ producto.categoria.nombre }}</p>
+    <p>Stock disponible: {{ producto.stock }}</p>
+    <p>Fecha de publicación: {{ producto.pub_date }}</p>
+</div>
+{% endblock %}
